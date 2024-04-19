@@ -8,9 +8,9 @@ exports.sourceNodes = async ({
     createNodeId,
   }) => {
    const { createNode } = actions
+   try {
    const parkData= await getPark();
-
-   parkData.data.forEach(park =>
+   parkData.data.forEach(park =>{
         createNode({
         ...park,
         id: createNodeId(park.parkCode),
@@ -20,11 +20,14 @@ exports.sourceNodes = async ({
             type: "Park",   
             contentDigest: createContentDigest(park),
         },
-        })
-        )
-      return
-      }
-  
+        });
+    });
+    } catch (error) {
+    console.error('Error', error);
+    }
+    return;
+    }
+ 
   async function getPark() {
   const PARK_NODE_TYPE = `Park`; 
     try {
