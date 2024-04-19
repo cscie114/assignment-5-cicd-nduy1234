@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import Layout from '../../components/layout'
 import Park from '../../components/park'
 
-const ParkPage = ({ data, pageContext }) => {
+const ParkPage = ({ data }) => {
 const {allPark} = data;
 const park = allPark.nodes[0];
     return (
