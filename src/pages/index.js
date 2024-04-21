@@ -6,7 +6,8 @@ const IndexPage = () => {
   return (
     <Layout pageTitle="List of National Parks in AZ">
       <div>
-      <Link to= "/parkaz">National Parks in AZ</Link> {" "}<br/>
+      <Link to= "/parkaz">National Parks in AZ</Link> {" "}<br/><br/>
+      <Link to= "/form">Contact Form</Link>
       </div>
       </Layout>
   )
