@@ -1,53 +1,50 @@
-//import * as React from "react"
-//import { Link, graphql } from 'gatsby';
-import React, {useState, useRef} from "react"
-import Layout from '../components/layout'
-//import { navigate } from "gatsby"
+import React, {useState, useRef} from "react";
+import Layout from "../components/layout";
+import { navigate } from "gatsby";
 
 const FormPage = () => {
-const [msg, setMsg] = useState();
-const formRef = useRef(null);
 const handleSubmit = (event) => {
 event.preventDefault();
 const myForm = event.target;
 const formData = new FormData(myForm); 
-const encData = new URLSearchParams(formData).toString()
+const aData = new URLSearchParams(formData).toString()
     fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encData,
+        body: aData,
     })
     .then(() => {
-        console.log(encData)
-        setMsg(<p>Thank you for your form!</p>);
-        formRef.current.reset();
+        console.log(aData)
+        navigate("/confirm/")
         })
-        .catch((error) => alert(error));
+    .catch((error) => console.log(error));
     };
     
     return (
     <Layout>
     <div>
-    <h3>Contact Form</h3>
-        { msg }
+    <h2>Contact Form</h2>     
         <form method="post" 
         name="Data Form" 
         data-netlify="true"
-        onSubmit={handleSubmit}
-        ref={formRef}>
-        <input type="hidden" name="form-name" value="Data Form"/>
+        onSubmit={handleSubmit}>
+        <input type="hidden" name="name" value="Data Form"/>
         <label>
-        Name
-        <input type="text" name="name" id="name" />
-        </label><br/><br/>
+        <p>Name</p>
+        <input type="text" name="name"/>
+        </label>
         <label>
-        Email
-        <input type="email" name="email" id="email" />
-        </label><br/><br/>
+        <p>Email</p>
+        <input type="email" name="email"/>
+        </label>
         <label>
-        Comments
-        <input type="textarea" name="comments" id="comments" />
-        </label><br/><br/>     
+        <p>Phone</p>
+        <input type="phone" name="phone"/>
+        </label>
+        <label>
+        <p>Comments</p>
+        <textarea name="comments"></textarea>
+        </label><br/>    
         <button type="submit">Send</button>
         <input type="reset" value="Clear" />
         </form>
@@ -56,5 +53,4 @@ const encData = new URLSearchParams(formData).toString()
     )
   }
   
-  
-  export default FormPage
+export default FormPage;
