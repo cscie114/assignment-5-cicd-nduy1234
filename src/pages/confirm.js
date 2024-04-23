@@ -5,7 +5,7 @@ const ConfirmPage = () => (
   <Layout>
     <h2>Confirm Page</h2>
     <p>Thank you for your form!</p> 
-    <p>We'll get back to you shortly.</p>
+    <p>We will get back to you shortly.</p>
   </Layout>
 );
 
