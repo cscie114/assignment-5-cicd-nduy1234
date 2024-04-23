@@ -25,10 +25,10 @@ const aData = new URLSearchParams(formData).toString()
     <div>
     <h2>Contact Form</h2>     
         <form method="post" 
-        name="Data Form" 
+        name="contact form" 
         data-netlify="true"
         onSubmit={handleSubmit}>
-        <input type="hidden" name="name" value="Data Form"/>
+        <input type="hidden" name="form-name" value="contact form"/>
         <label>
         <p>Name</p>
         <input type="text" name="name"/>
